@@ -28,11 +28,22 @@ onMounted(() => {
             li[i].addEventListener('mouseout', () => {
                 path.forEach(el => !el.hasAttribute('stroke') ? el.setAttribute('fill', 'black') : el.setAttribute('stroke', 'black'));                
             })
-    })    
+    })  
+    
+    const sidebar: any = document.querySelector('.sidebar');
+
+    sidebar.addEventListener('mouseenter', () => {
+    sidebar.classList.add('hovered');
+    
+    sidebar.addEventListener('mouseleave', () => {
+    sidebar.classList.remove('hovered');
+});
+});
 })
 // function getImageUrlIcon (name: string) {
 //     return new URL('../../assets/icons/' + name, import.meta.url).href
 // }
+
 
 </script>
 
@@ -185,19 +196,34 @@ onMounted(() => {
     }
 }
 ::-webkit-scrollbar {
-    width: 4px;    
+    width: 4px;
+    height: 50px;
+    max-height: 50px;
 }
 ::-webkit-scrollbar-track {
     background-color: #f8f9fd;    
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    height: 124px;
+    height: 54px;
+    max-height: 50px;
     background-color: #ecf3ff;
 }
+
+
+.sidebar::-webkit-scrollbar {
+  display: none;    
+  
+} 
+.sidebar.hovered::-webkit-scrollbar {
+  display: block;
+}
+
+
 .sidebar {
     height: 100vh;
     overflow-y: scroll;
+    
     &__list {
         max-width: 235px;
         padding-right: 7px;              
@@ -252,8 +278,7 @@ onMounted(() => {
         font-weight: 300;
         font-size: 14px;
         color: #282828;
-        margin-left: 8px;
-      
+        margin-left: 8px;      
     }
 }
 
